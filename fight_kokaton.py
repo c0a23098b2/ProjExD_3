@@ -141,6 +141,7 @@ def main():
     bombs = [Bomb((255,0,0),10)for _ in range(NUM_OF_BOMBS)]
     beam = None
     clock = pg.time.Clock()
+    Score()
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -167,6 +168,7 @@ def main():
                     beam=None
                     bomb=None
                     bird.change_img(6,screen)
+                    Score.update()
                     pg.display.update()
         bombs = [bomb for bomb in bombs if bomb is not None]
 
@@ -177,8 +179,20 @@ def main():
         if beam is not None:
             beam.update(screen)
         pg.display.update()
-        tmr += 1
+        tmr += 1     
         clock.tick(50)
+    
+
+class Score:
+    def __init__(self):
+        self.fonto = pg.font.SysFont("hgp創英角ﾎﾟｯﾌﾟ体",30)
+        score = 0
+        fonto =pg.font.Font(None,80) 
+        text = fonto.render("score",0,(0,0,255))
+    def update(self):
+        screen = pg.display.set_mode((WIDTH, HEIGHT))
+        screen.blit(text,[100,50])
+        
 
 
 if __name__ == "__main__":
