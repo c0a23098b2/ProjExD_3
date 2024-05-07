@@ -189,7 +189,7 @@ class Score:
         score = 0
         fonto =pg.font.Font(None,80) 
         text = fonto.render("score",0,(0,0,255))
-    def update(self):
+    def update(self,text):
         screen = pg.display.set_mode((WIDTH, HEIGHT))
         screen.blit(text,[100,50])
         
